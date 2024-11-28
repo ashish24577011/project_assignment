@@ -1,7 +1,7 @@
-# Load required library
+
 library(ggplot2)
 
-# Capture and assign command-line arguments
+
 args <- commandArgs(trailingOnly = TRUE)
 output_file <- args[1]   # e.g., "different_clusters.png"
 x_label <- args[2]       # e.g., "Relative from center [bp]"
@@ -12,7 +12,6 @@ plot_title <- args[4]    # e.g., "MNase fragment profile"
 data_file <- "q2_data.tsv"  # Change the filename as needed
 data <- read.table(data_file, header = FALSE, col.names = c("X", "Y", "Category"))
 
-# Create the plot with customized aesthetics
 plot <- ggplot(data, aes(x = X, y = Y, color = Category, group = Category)) +
   geom_line(size = 1) +                # Adjust line thickness
   labs(
@@ -22,6 +21,6 @@ plot <- ggplot(data, aes(x = X, y = Y, color = Category, group = Category)) +
   ) +
   theme_minimal()                       # Apply a minimal theme for clarity
 
-# Save the plot to the output file with specified dimensions
+
 ggsave(output_file, plot = plot, width = 8, height = 6)
 
